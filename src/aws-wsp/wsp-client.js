@@ -16,18 +16,28 @@ import {Base64} from 'js-base64';
  */
 class wspClient {
 
-	/**
-	 *
-	 * @param config
-	 * @param openFunction
-	 * @param messageFunction
-	 * @param errorFunction
-	 * @param closeFunction
-	 */
-	constructor(config, openFunction, messageFunction, errorFunction, closeFunction) {
-		let self = this;
 
-		self.errorFunction=errorFunction;
+	constructor() {
+	}
+
+	onOpen() {
+		console.log('Open');
+	}
+
+	onClose(event) {
+		console.log(event);
+	}
+
+	onMessage(message) {
+		console.log(message);
+	}
+
+	onError(event) {
+		console.log(event);
+	}
+
+	open(config) {
+		let self=this;
 
 		let options = Object.assign({
 			"url": "ws://localhost",
@@ -36,7 +46,7 @@ class wspClient {
 		self.frames = {};
 		self.socket = new WebSocket(options.url);
 		self.socket.onopen = function (event) {
-			openFunction();
+			self.onOpen();
 		};
 		self.socket.onmessage = function (event) {
 			let jsonData = JSON.parse(event.data);
@@ -80,7 +90,7 @@ class wspClient {
 					fetch(jsonData['s3'], {})
 						.then(function (response) {
 							if (!response.ok) {
-								errorFunction(response);
+								self.onError(response);
 							}
 							return response;
 						})
@@ -98,7 +108,7 @@ class wspClient {
 
 						})
 						.catch(function (error) {
-							errorFunction(error);
+							self.onError(error);
 						});
 				} else {
 					deployEvent();
@@ -107,17 +117,17 @@ class wspClient {
 
 
 			function deployEvent() {
-				messageFunction(jsonData);
+				self.onMessage(jsonData);
 			}
 
 		};
 
 		self.socket.onclose = function (event) {
-			closeFunction(event);
+			self.onClose(event);
 		};
 
 		self.socket.onerror = function (event) {
-			errorFunction(event);
+			self.onError(event);
 		};
 
 	}
@@ -148,7 +158,7 @@ class wspClient {
 			try {
 				self.socket.send(payload);
 			} catch (event) {
-				self.errorFunction(event);
+				self.onError(event);
 			}
 		}
 	}
@@ -170,7 +180,7 @@ class wspClient {
 					"data": packet
 				}));
 			} catch (event) {
-				self.errorFunction(event);
+				self.onError(event);
 			}
 			setTimeout(function () {
 				self._websocketSendPacket();
