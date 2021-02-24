@@ -1,0 +1,30 @@
+{
+  "name": "@nautoguide/aws-wsp",
+  "version": "1.0.0",
+  "description": "AWS Client server protocol for websockets",
+  "scripts": {
+    "dopublish": "node prepublish.js && npm publish src/aws-wsp && node postpublish.js",
+    "dopublish-dry": "node prepublish.js && npm publish src/aws-wsp --dry-run && node postpublish.js",
+    "devmode": "node devmode.js",
+    "clean": "node clean.js"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nautoguide/aws-wsp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nautoguide/aws-wsp/issues"
+  },
+  "license": "GPLv3",
+  "devDependencies": {
+    "shelljs": "^0.8.4"
+  },
+  "dependencies": {
+    "uuid": "^8.3.2",
+    "js-base64": "^3.6.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
