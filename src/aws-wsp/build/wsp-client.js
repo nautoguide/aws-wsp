@@ -1,5 +1,7 @@
 "use strict";
 
+const WebSocket = require('ws');
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });

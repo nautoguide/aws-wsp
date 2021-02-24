@@ -1,6 +1,6 @@
 {
   "name": "@nautoguide/aws-wsp",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "AWS Client server protocol for websockets",
   "scripts": {
     "dopublish": "node prepublish.js && npm publish src/aws-wsp && node postpublish.js",
@@ -9,7 +9,6 @@
     "clean": "node clean.js",
     "build": "babel src/aws-wsp -d src/aws-wsp/build"
   },
-  "type": "module",
   "main": "index.js",
   "repository": {
     "type": "git",
