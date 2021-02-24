@@ -3,7 +3,6 @@ import magic from "./magic";
 import {Base64} from 'js-base64';
 
 
-
 /**
  * @classdesc
  *

@@ -1,12 +1,13 @@
 {
   "name": "@nautoguide/aws-wsp",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "AWS Client server protocol for websockets",
   "scripts": {
     "dopublish": "node prepublish.js && npm publish src/aws-wsp && node postpublish.js",
     "dopublish-dry": "node prepublish.js && npm publish src/aws-wsp --dry-run && node postpublish.js",
     "devmode": "node devmode.js",
-    "clean": "node clean.js"
+    "clean": "node clean.js",
+    "build": "babel src/aws-wsp -d src/aws-wsp/build"
   },
   "main": "index.js",
   "repository": {
@@ -18,7 +19,10 @@
   },
   "license": "GPLv3",
   "devDependencies": {
-    "shelljs": "^0.8.4"
+    "shelljs": "^0.8.4",
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.1",
+    "@babel/preset-env": "^7.13.5"
   },
   "dependencies": {
     "uuid": "^8.3.2",
