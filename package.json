@@ -6,8 +6,10 @@
     "dopublish": "node prepublish.js && npm publish src/aws-wsp && node postpublish.js",
     "dopublish-dry": "node prepublish.js && npm publish src/aws-wsp --dry-run && node postpublish.js",
     "devmode": "node devmode.js",
-    "clean": "node clean.js"
+    "clean": "node clean.js",
+    "build": "babel src/aws-wsp -d src/aws-wsp/build"
   },
+  "type": "module",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -18,7 +20,10 @@
   },
   "license": "GPLv3",
   "devDependencies": {
-    "shelljs": "^0.8.4"
+    "shelljs": "^0.8.4",
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.1",
+    "@babel/preset-env": "^7.13.5"
   },
   "dependencies": {
     "uuid": "^8.3.2",
