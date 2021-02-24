@@ -7,7 +7,7 @@
     "dopublish-dry": "node prepublish.js && npm publish src/aws-wsp --dry-run && node postpublish.js",
     "devmode": "node devmode.js",
     "clean": "node clean.js",
-    "build": "babel src/aws-wsp -d src/aws-wsp/build"
+    "build": "babel src/aws-wsp/*.js -d src/aws-wsp/build/"
   },
   "main": "index.js",
   "repository": {
