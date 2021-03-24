@@ -1,6 +1,6 @@
 {
   "name": "@nautoguide/aws-wsp",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "AWS Client server protocol for websockets",
   "scripts": {
     "dopublish": "node prepublish.js && npm publish src/aws-wsp && node postpublish.js",
